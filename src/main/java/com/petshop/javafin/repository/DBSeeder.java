@@ -18,6 +18,7 @@ public class DBSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Pet cat = new Pet(
+                "1",
                 "Cats",
                 "Mary",
                 new String[]{""},
@@ -25,6 +26,7 @@ public class DBSeeder implements CommandLineRunner {
                 "available"
         );
         Pet dog = new Pet(
+                "2",
                 "Dogs",
                 "Jack",
                 new String[]{""},
@@ -35,7 +37,7 @@ public class DBSeeder implements CommandLineRunner {
         this.petRepository.deleteAll();
 
         List<Pet> pets = Arrays.asList(cat, dog);
-        System.out.println();
+        System.out.println(pets);
         this.petRepository.saveAll(pets);
         System.out.println("Pets were added");
     }

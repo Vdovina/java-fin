@@ -20,6 +20,7 @@ public class PetController {
     @GetMapping("/all")
     public List<Pet> getAll() {
         List<Pet> pets = this.petRepository.findAll();
+        System.out.println(pets);
         return pets;
     }
 }

@@ -13,8 +13,8 @@ public class Pet {
     private String[] tags;
     private String status;
 
-    public Pet(String category, String name, String[] photoUrls, String[] tags, String status) {
-        this.id = "0";
+    public Pet(String id, String category, String name, String[] photoUrls, String[] tags, String status) {
+        this.id = id;
         this.category = category;
         this.name = name;
         this.photoUrls = photoUrls;
