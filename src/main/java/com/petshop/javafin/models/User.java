@@ -4,7 +4,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Users")
 public class User {
-    private final String id;
+    private String id;
     private String username;
     private String email;
     private String password;
