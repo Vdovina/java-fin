@@ -1,6 +1,7 @@
 package com.petshop.javafin.repository;
 
 import com.petshop.javafin.models.Pet;
+import org.bson.types.ObjectId;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +19,7 @@ public class DBSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Pet cat = new Pet(
-                "1",
+                new ObjectId(),
                 "Cats",
                 "Mary",
                 new String[]{""},
@@ -26,7 +27,7 @@ public class DBSeeder implements CommandLineRunner {
                 "available"
         );
         Pet dog = new Pet(
-                "2",
+                new ObjectId(),
                 "Dogs",
                 "Jack",
                 new String[]{""},
@@ -40,6 +41,13 @@ public class DBSeeder implements CommandLineRunner {
         System.out.println(pets);
         this.petRepository.saveAll(pets);
         System.out.println("Pets were added");
+
+        for (Pet pet : petRepository.findByName("Jack")) {
+            System.out.println(pet);
+        }
+        for (Pet pet : petRepository.findByCategory("Cats")) {
+            System.out.println(pet);
+        }
     }
 
 }

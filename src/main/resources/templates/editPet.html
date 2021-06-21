@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Редактировать питомца</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
+</head>
+<body class="container py-3">
+<header th:insert="blocks :: header"></header>
+
+<div class="container mt-5 mb-5">
+  <h1>Редактировать питомца</h1>
+  <div th:each="el : ${pet}">
+
+    <form method="post" >
+      <input required type="text" th:value="${el.category}" name="category" placeholder="Введите категорию" class="form-control">
+      <br/>
+      <input required type="text" th:value="${el.name}" name="name" placeholder="Введите имя" class="form-control">
+      <br/>
+      <input required type="text" th:value="${el.status}" name="status" placeholder="Введите статус" class="form-control">
+      <br/>
+      <button type="submit" class="btn btn-success">Обновить</button>
+    </form>
+  </div>
+</div>
+
+<footer th:insert="blocks :: footer"></footer>
+</body>
+</html>
