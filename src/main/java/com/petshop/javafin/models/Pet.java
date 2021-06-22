@@ -4,6 +4,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.validation.annotation.Validated;
 
 @Document(collection = "Pets")
 public class Pet {
@@ -42,8 +43,8 @@ public class Pet {
         this.available = available;
     }
 
-    public Boolean isCat() { return category == "Cats"; }
-    public Boolean isDog() { return category == "Dogs"; }
+    public Boolean isCat() { return category.equals("Cats"); }
+    public Boolean isDog() { return category.equals("Dogs"); }
 
     public ObjectId getId() { return id; }
     public String getCategory() { return category; }
@@ -56,6 +57,30 @@ public class Pet {
     }
     public String getDescription() {
         return description;
+    }
+
+    public String getRusCategory() {
+        if (isCat())
+        {
+            if (sex.equals("female")) return "Кошка";
+            else return "Кот";
+        }
+        if (isDog())
+        {
+            if (sex.equals("female")) return "Собака";
+            else return "Пёс";
+        }
+        return "";
+    }
+    public String getRusAvailable() {
+        String str;
+        if (available) str = "Доступен";
+        else str = "Не доступен";
+        return str;
+    }
+    public String getRusSex() {
+            if (sex.equals("female")) return "Девочка";
+            else return "Мальчик";
     }
 
     public void setDescription(String description) {

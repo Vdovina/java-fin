@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Редактировать питомца</title>
+  <title>Редактировать питомца | Доброе сердце</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css">
 </head>
@@ -15,9 +15,9 @@
     <form method="post" >
 
         <input required type="radio" id="idCats" name="category" value="Cats"  th:checked="${el.category == 'Cats'}">
-        <label for="idCats">Кошка</label>
+        <label for="idCats">Кот/Кошка</label>
         <input required type="radio" id="idDogs" name="category" value="Dogs" th:checked="${el.category == 'Dogs'}">
-        <label for="idDogs">Собака</label>
+        <label for="idDogs">Пёс/Собака</label>
 
       <br/>
       <input required type="radio" id="idfemale" name="sex" value="female"  th:checked="${el.sex == 'female'}">
@@ -25,12 +25,14 @@
       <input required type="radio" id="idmale" name="sex" value="male"  th:checked="${el.sex == 'male'}">
       <label for="idmale">Мальчик</label>
       <br/>
-      <input required type="text" th:value="${el.name}" name="name" placeholder="Введите имя" class="form-control">
+      <input required type="text" th:value="${el.name}" name="name" placeholder="Введите имя (разрешены русские буквы и цифры)" pattern="^[\dа-яА-я]*$" class="form-control">
       <br/>
       <textarea th:text="${el.description}" name="description" placeholder="Введите описание"class="form-control" />
       <br/>
-      <input type="checkbox" id="status" name="available" th:checked="${el.available}">
-      <label for="status">Доступен(а)</label>
+      <input required type="radio" id="idav" name="available" value="true"  th:checked="${el.available == true}">
+      <label for="idav">Доступен</label>
+      <input required type="radio" id="idunav" name="available" value="false"  th:checked="${el.available == false}">
+      <label for="idunav">Не доступен</label>
       <br/>
       <button type="submit" class="btn btn-success">Обновить</button>
     </form>
