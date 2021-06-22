@@ -35,11 +35,11 @@ public class DBSeeder implements CommandLineRunner {
                 "available"
         );
 
-        this.petRepository.deleteAll();
+        //this.petRepository.deleteAll();
 
         List<Pet> pets = Arrays.asList(cat, dog);
         System.out.println(pets);
-        this.petRepository.saveAll(pets);
+        //this.petRepository.saveAll(pets);
         System.out.println("Pets were added");
 
         for (Pet pet : petRepository.findByName("Jack")) {

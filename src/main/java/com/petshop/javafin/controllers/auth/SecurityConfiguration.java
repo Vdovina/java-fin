@@ -25,10 +25,13 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     //@Autowired
     //MongoUserDetailsService userDetailsService;
+    @Autowired
+    CustomizeAuthenticationSuccessHandler customizeAuthenticationSuccessHandler;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         UserDetailsService userDetailsService = mongoUserDetails();
+//        System.out.println(passwordEncoder().encode("11111"));
 //        auth
 //                .inMemoryAuthentication()
 //                .withUser("admin").password(passwordEncoder().encode("12345qwerty")).roles("ADMIN")
@@ -53,9 +56,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .exceptionHandling().accessDeniedPage("/403");
         http
-                .csrf().disable()
-                .authorizeRequests().anyRequest().authenticated()
-                .and().formLogin().permitAll()
+                .authorizeRequests()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/signup").permitAll()
+                .anyRequest().authenticated()
+                .and().csrf().disable()
+                .formLogin().permitAll()
+                //.loginPage("/login").failureUrl("/login?error=true")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
                 .and().exceptionHandling()

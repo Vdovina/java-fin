@@ -5,13 +5,15 @@ import com.petshop.javafin.models.User;
 import com.petshop.javafin.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/pets")
 public class AuthController {
     private UserRepository userRepository;
@@ -25,6 +27,7 @@ public class AuthController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login() {
+        System.out.println("login test");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
@@ -32,10 +35,12 @@ public class AuthController {
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public ModelAndView signup() {
+        System.out.println("signup test");
         ModelAndView modelAndView = new ModelAndView();
         User user = new User();
         modelAndView.addObject("user", user);
         modelAndView.setViewName("signup");
+        System.out.println("test");
         return modelAndView;
     }
 
