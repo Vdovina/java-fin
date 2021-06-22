@@ -25,7 +25,7 @@
       <input required type="radio" id="idmale" name="sex" value="male"  th:checked="${el.sex == 'male'}">
       <label for="idmale">Мальчик</label>
       <br/>
-      <input required type="text" th:value="${el.name}" name="name" placeholder="Введите имя (разрешены русские буквы и цифры)" pattern="^[\dа-яА-я]*$" class="form-control">
+      <input required type="text" th:value="${el.name}" name="name" placeholder="Введите имя (разрешены русские буквы и цифры)" pattern="^[\dа-яА-я ]*$" class="form-control">
       <br/>
       <textarea th:text="${el.description}" name="description" placeholder="Введите описание"class="form-control" />
       <br/>
