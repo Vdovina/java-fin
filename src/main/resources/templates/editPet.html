@@ -13,11 +13,22 @@
   <div th:each="el : ${pet}">
 
     <form method="post" >
-      <input required type="text" th:value="${el.category}" name="category" placeholder="Введите категорию" class="form-control">
+      <input required type="radio" id="idCats" name="category" value="Cats" th:checked="${el.isCat()}">
+      <label for="idCats">Кошка</label>
+      <input required type="radio" id="idDogs" name="category" value="Dogs" th:checked="${el.isDog()}">
+      <label for="idDogs">Собака</label>
+      <br/>
+      <input required type="radio" id="female" name="sex" value="female">
+      <label for="female">Девочка</label>
+      <input required type="radio" id="male" name="sex" value="male">
+      <label for="male">Мальчик</label>
       <br/>
       <input required type="text" th:value="${el.name}" name="name" placeholder="Введите имя" class="form-control">
       <br/>
-      <input required type="text" th:value="${el.status}" name="status" placeholder="Введите статус" class="form-control">
+      <textarea th:value="${el.description}" name="description" placeholder="Введите описание"class="form-control"></textarea>
+      <br/>
+      <input type="checkbox" id="status" name="available" th:checked="${el.available}">
+      <label for="status">Доступен(а)</label>
       <br/>
       <button type="submit" class="btn btn-success">Обновить</button>
     </form>

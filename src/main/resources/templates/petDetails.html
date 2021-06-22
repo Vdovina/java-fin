@@ -12,7 +12,9 @@
   <div th:each="el : ${pet}" class="alert alert-info mt-2">
     <h3 th:text="${el.name}" />
     <p><b>Категория: </b><span th:text="${el.category}" /></p>
-    <p><b>Статус: </b><span th:text="${el.status}" /></p>
+    <p><b>Пол: </b><span th:text="${el.sex}" /></p>
+    <p><b>Статус: </b><span th:text="${el.available}" /></p>
+    <p th:text="${el.description}"></p>
     <a th:href="'/pet/' + ${el.id} + '/edit'" class="btn btn-primary my-2">Редактировать</a>
     <form th:action="'/pet/' + ${el.id} + '/delete'" method="post">
       <button class="btn btn-primary my-2" type="submit">Удалить</button>

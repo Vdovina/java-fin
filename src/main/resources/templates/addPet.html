@@ -11,11 +11,22 @@
 <div class="container mt-5 mb-5">
   <h1>Добавить питомца</h1>
   <form action="/pets/add" method="post" >
-    <input required type="text" name="category" placeholder="Введите категорию" class="form-control">
+    <input required type="radio" id="idCats" name="category" value="Cats" >
+    <label for="idCats">Кошка</label>
+    <input required type="radio" id="idDogs" name="category" value="Dogs" >
+    <label for="idDogs">Собака</label>
+    <br/>
+    <input required type="radio" id="female" name="sex" value="female">
+    <label for="female">Девочка</label>
+    <input required type="radio" id="male" name="sex" value="male">
+    <label for="male">Мальчик</label>
     <br/>
     <input required type="text" name="name" placeholder="Введите имя" class="form-control">
     <br/>
-    <input required type="text" name="status" placeholder="Введите статус" class="form-control">
+    <textarea name="description" placeholder="Введите описание"class="form-control"></textarea>
+    <br/>
+    <input type="checkbox" id="status" name="available" checked=true>
+    <label for="status">Доступен(а)</label>
     <br/>
     <button type="submit" class="btn btn-success">Добавить</button>
   </form>

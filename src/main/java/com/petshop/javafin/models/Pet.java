@@ -13,8 +13,14 @@ public class Pet {
     @Field(value = "category")
     private String category;
 
+    @Field(value = "sex")
+    private String sex;
+
     @Field(value = "name")
     private String name;
+
+    @Field(value = "description")
+    private String description;
 
     @Field(value = "photoUrls")
     private String[] photoUrls;
@@ -22,43 +28,56 @@ public class Pet {
     @Field(value = "tags")
     private String[] tags;
 
-    @Field(value = "status")
-    private String status;
+    @Field(value = "available")
+    private Boolean available;
 
-    public Pet(ObjectId id, String category, String name, String[] photoUrls, String[] tags, String status) {
+    public Pet(ObjectId id, String category, String sex, String name, String description, String[] photoUrls, String[] tags, Boolean available) {
         this.id = id;
         this.category = category;
+        this.sex = sex;
         this.name = name;
+        this.description = description;
         this.photoUrls = photoUrls;
         this.tags = tags;
-        this.status = status;
+        this.available = available;
     }
+
+    public Boolean isCat() { return category == "Cats"; }
+    public Boolean isDog() { return category == "Dogs"; }
 
     public ObjectId getId() { return id; }
     public String getCategory() { return category; }
     public String getName() { return name; }
     public String[] getPhotoUrls() { return photoUrls; }
     public String[] getTags() { return tags; }
-    public String getStatus() { return status; }
+    public Boolean getAvailable() { return available; }
+    public String getSex() {
+        return sex;
+    }
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
     public void setCategory(String category) {
         this.category = category;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public void setPhotoUrls(String[] photoUrls) {
         this.photoUrls = photoUrls;
     }
-
     public void setTags(String[] tags) {
         this.tags = tags;
     }
-
-    public void setStatus(String status) {
-        this.status = status;
+    public void setAvailable(Boolean available) {
+        this.available = available;
     }
 
     @Override
@@ -68,6 +87,6 @@ public class Pet {
                 + ", name: " + this.name
                 + ", photoUrls: " + this.photoUrls
                 + ", tags: " + this.tags
-                + ", status: " + this.status;
+                + ", available: " + this.available;
     }
 }

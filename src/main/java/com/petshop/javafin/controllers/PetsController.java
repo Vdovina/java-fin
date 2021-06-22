@@ -38,10 +38,12 @@ public class PetsController {
 
     @PostMapping("/pets/add")
     public String postAddNewPet(@RequestParam String category,
+                                @RequestParam String sex,
                                 @RequestParam String name,
-                                @RequestParam String status, Model model)
+                                @RequestParam String description,
+                                @RequestParam Boolean available, Model model)
     {
-        Pet pet = new Pet(new ObjectId(), category, name, new String[]{""}, new String[]{""}, status);
+        Pet pet = new Pet(new ObjectId(), category, sex, name, description, new String[]{""}, new String[]{""}, available);
         petRepository.save(pet);
         return "redirect:/pets";
     }
@@ -75,13 +77,17 @@ public class PetsController {
     @PostMapping("/pet/{id}/edit")
     public String postEditNewPet(@PathVariable(value = "id") ObjectId id,
                                 @RequestParam String category,
-                                @RequestParam String name,
-                                @RequestParam String status, Model model)
+                                 @RequestParam String sex,
+                                 @RequestParam String name,
+                                 @RequestParam String description,
+                                @RequestParam Boolean status, Model model)
     {
         Pet pet = petRepository.findById(id.toString()).orElseThrow();
         pet.setCategory(category);
+        pet.setSex(sex);
         pet.setName(name);
-        pet.setStatus(status);
+        pet.setDescription(description);
+        pet.setAvailable(status);
         petRepository.save(pet);
         return "redirect:/pet/{id}";
     }
