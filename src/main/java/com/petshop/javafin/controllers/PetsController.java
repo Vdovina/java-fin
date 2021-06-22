@@ -40,10 +40,9 @@ public class PetsController {
     public String postAddNewPet(@RequestParam String category,
                                 @RequestParam String sex,
                                 @RequestParam String name,
-                                @RequestParam String description,
-                                @RequestParam Boolean available, Model model)
+                                @RequestParam String description, Model model)
     {
-        Pet pet = new Pet(new ObjectId(), category, sex, name, description, new String[]{""}, new String[]{""}, available);
+        Pet pet = new Pet(new ObjectId(), category, sex, name, description, new String[]{""}, new String[]{""}, true);
         petRepository.save(pet);
         return "redirect:/pets";
     }
@@ -80,14 +79,14 @@ public class PetsController {
                                  @RequestParam String sex,
                                  @RequestParam String name,
                                  @RequestParam String description,
-                                @RequestParam Boolean status, Model model)
+                                @RequestParam Boolean available, Model model)
     {
         Pet pet = petRepository.findById(id.toString()).orElseThrow();
         pet.setCategory(category);
         pet.setSex(sex);
         pet.setName(name);
         pet.setDescription(description);
-        pet.setAvailable(status);
+        pet.setAvailable(available);
         petRepository.save(pet);
         return "redirect:/pet/{id}";
     }

@@ -13,7 +13,7 @@
   <div th:each="el : ${pets}" class="alert alert-info mt-2">
     <h3 th:text="${el.name}" />
     <p th:text="${el.category}" />
-    <a th:href="'/pet/' + ${el.id}">See</a>
+    <a th:href="'/pet/' + ${el.id}">Посмотреть</a>
   </div>
   <a href="/pets/add" class="btn btn-primary my-2">Добавить</a>
 </div>
