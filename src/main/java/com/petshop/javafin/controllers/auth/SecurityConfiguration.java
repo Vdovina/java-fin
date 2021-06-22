@@ -53,14 +53,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //                .and()
 //                .exceptionHandling().accessDeniedPage("/403");
         http
-                .csrf().disable()
-                .authorizeRequests().anyRequest().authenticated()
-                .and().formLogin().permitAll()
+                .authorizeRequests()
+                .antMatchers("/login").permitAll()
+                .antMatchers("/signup").permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/pets").permitAll()
+                .anyRequest().authenticated()
+                .and().csrf().disable()
+                .formLogin().permitAll()
+                //.loginPage("/login").failureUrl("/login?error=true")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
                 .and().exceptionHandling()
                 .and().sessionManagement().disable();
-
     }
 
     @Override
